@@ -735,7 +735,26 @@ int main( int argc, char *argv[])
               app_tabspace++;
               break;
 
+           case 'a':  
+              ncurses_runcmd( " alsamixer -c 1 ");
+              break;
+
            case 10:  
+              ncurses_runcmd( " pkill mplayer ; sleep 1 " );
+              attroff( A_REVERSE ); color_set( 0, NULL );
+              erase(); foxi = 1;
+              mvprintw( foxi, 5 , "%s", str_selection ); 
+              mvprintw( foxi, 5 , "%s (%d)", strgetcol( str_selection , foxi) , foxi ); foxi++;
+              mvprintw( foxi, 5 , "%s (%d)", strgetcol( str_selection , foxi) , foxi ); foxi++;
+              mvprintw( foxi, 5 , "%s (%d)", strgetcol( str_selection , foxi) , foxi ); foxi++;
+              if ( strcmp( strgetcol( str_selection, 3 ), "" ) != 0 ) 
+                  ncurses_runwith( " screen -d -m mplayer -playlist ", strgetcol( str_selection, 3 ) );
+              else if ( strcmp( strgetcol( str_selection, 2 ), "" ) != 0 ) 
+                  ncurses_runwith( " screen -d -m mplayer ", strgetcol( str_selection, 2 ) );
+              break;
+
+           case 'r':  
+              ncurses_runcmd( " pkill mplayer  " );
               attroff( A_REVERSE ); color_set( 0, NULL );
               erase(); foxi = 1;
               mvprintw( foxi, 5 , "%s", str_selection ); 
