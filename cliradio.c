@@ -1,6 +1,4 @@
 
-
-
 #include <stdio.h>
 #if defined(__linux__)
 #define MYOS 1
@@ -14,7 +12,6 @@
 #else
 #define MYOS 0
 #endif
-
 
 #include <stdlib.h>
 #include <string.h>
@@ -753,6 +750,13 @@ int main( int argc, char *argv[])
 
            case 'a':  
               ncurses_runcmd( " alsamixer -c 1 ");
+              break;
+
+           case '-':  
+              ncurses_runcmd( "  amixer -c 1 -q sset PCM 3%-   ");
+              break;
+           case '+':  
+              ncurses_runcmd( "  amixer -c 1 -q sset PCM 3%+   ");
               break;
 
            case 10:  
