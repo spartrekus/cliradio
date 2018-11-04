@@ -1,5 +1,21 @@
 
+
+
 #include <stdio.h>
+#if defined(__linux__)
+#define MYOS 1
+#elif defined(_WIN32)
+#define MYOS 2
+#elif defined(_WIN64)
+#define MYOS 3
+#elif defined(__unix__)
+#define MYOS 4
+#define PATH_MAX 2500
+#else
+#define MYOS 0
+#endif
+
+
 #include <stdlib.h>
 #include <string.h>
 #include <ncurses.h>
